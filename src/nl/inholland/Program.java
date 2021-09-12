@@ -8,10 +8,23 @@ public class Program {
     }
 
     void start() {
-        Student student = new Student("Henkie", "Henkie@gmail.com", "ITFT2A");
-        Teacher teacher = new Teacher("Petertje", "Petertje@inholland.nl", 2000.00);
+        Person[] people = new Person[] {
+            new Student("Henkie", "Henkie@gmail.com", "IT2A"),
+            new Student("Pietertje", "Pietertje@outlook.com", "IT2B"),
+            new Teacher("Henk", "Henk@inholland.nl", 2000),
+            new Teacher("Pieter", "Pieter@inholland.nl", 3000)
+        };
 
-        System.out.println(student);
-        System.out.println(teacher);
+        for (Person person : people) {
+            System.out.println(person);
+
+            if (person.getClass() == Teacher.class) {
+                System.out.printf("Yearly Salary: € %.2f%n%n%n",  calculateSalary(((Teacher) person).salary));
+            }
+        }
+    }
+
+    private double calculateSalary(double salary) {
+        return salary * 12;
     }
 }
